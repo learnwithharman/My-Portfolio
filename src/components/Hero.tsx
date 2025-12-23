@@ -41,7 +41,7 @@ const Hero = () => {
           animateBy="letters"
           direction="top"
           delay={50}
-          className="font-plus text-6xl md:text-8xl lg:text-9xl font-extrabold text-white glow-text mb-8 tracking-tighter leading-[0.9]"
+          className="font-plus text-5xl md:text-8xl lg:text-9xl font-extrabold text-white glow-text mb-8 tracking-tighter leading-[0.9]"
         />
 
         <div className="flex flex-col items-center gap-6">

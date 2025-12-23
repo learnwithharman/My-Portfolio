@@ -19,7 +19,7 @@ const About = () => {
           <div className="flex items-center gap-6">
             <h2
               id="about-heading"
-              className="font-plus text-5xl md:text-7xl font-extrabold text-white tracking-tighter transition-all duration-500 group-hover:text-neon-cyan"
+              className="font-plus text-4xl md:text-7xl font-extrabold text-white tracking-tighter transition-all duration-500 group-hover:text-neon-cyan"
             >
               About <span className="text-white">Me</span>
             </h2>

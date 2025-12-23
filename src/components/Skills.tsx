@@ -76,7 +76,7 @@ const Skills = () => {
           <span className="text-xs font-bold uppercase tracking-[0.5em] text-neon-cyan mb-4">Expertise</span>
           <h2
             id="skills-heading"
-            className="font-orbitron text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter"
+            className="font-orbitron text-4xl md:text-7xl font-black text-white mb-8 tracking-tighter"
           >
             Technical <span className="text-neon-purple">Arsenal</span>
           </h2>

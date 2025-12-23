@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import chessImage from '@/assets/chesswithmonk-preview.png';
 
 const FeaturedWork = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "center center"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Calculate spread offsets - only animate X on desktop
+  const leftX = useTransform(smoothProgress, [0, 1], [window.innerWidth > 768 ? "100%" : "0%", "0%"]);
+  const rightX = useTransform(smoothProgress, [0, 1], [window.innerWidth > 768 ? "-100%" : "0%", "0%"]);
+  const opacity = useTransform(smoothProgress, [0, 0.5], [0, 1]);
+  const scale = useTransform(smoothProgress, [0, 1], [0.8, 1]);
+
   const projects = [
     {
       title: "ChessWithMonk",
@@ -15,7 +34,7 @@ const FeaturedWork = () => {
   ];
 
   return (
-    <section id="work" className="py-32 px-6 relative overflow-hidden" aria-labelledby="work-heading">
+    <section id="work" ref={containerRef} className="py-32 px-6 relative overflow-hidden" aria-labelledby="work-heading">
       {/* Background Decorative Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-cyan/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -33,16 +52,15 @@ const FeaturedWork = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div key={index}>
-              <ProjectCard {...project} />
-            </div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {/* First Project (Left) */}
+          <motion.div style={{ x: leftX, opacity, scale }} className="h-full">
+            <ProjectCard {...projects[0]} />
+          </motion.div>
 
-          {/* Coming Soon Placeholders */}
-          {[1, 2].map((i) => (
-            <article key={i} className="group relative rounded-3xl overflow-hidden glass-card h-full flex flex-col border-dashed border-white/10 border-2 min-h-[400px]">
+          {/* Second Project (Center/Coming Soon) */}
+          <motion.div style={{ opacity, scale }} className="h-full">
+            <article className="group relative rounded-3xl overflow-hidden glass-card h-full flex flex-col border-dashed border-white/10 border-2 min-h-[400px]">
               <div className="relative z-10 p-8 flex flex-col items-center justify-center flex-grow text-center">
                 <div className="w-16 h-16 rounded-full glass border-white/10 flex items-center justify-center mb-6 text-white/20 group-hover:text-neon-purple transition-colors duration-500">
                   <span className="text-2xl font-bold italic">?</span>
@@ -54,11 +72,27 @@ const FeaturedWork = () => {
                   Innovating the next digital experience. Stay tuned.
                 </p>
               </div>
-
-              {/* Decorative Subtle ping */}
               <div className="absolute bottom-4 right-4 h-1 w-1 bg-white/20 rounded-full" />
             </article>
-          ))}
+          </motion.div>
+
+          {/* Third Project (Right/Coming Soon) */}
+          <motion.div style={{ x: rightX, opacity, scale }} className="h-full">
+            <article className="group relative rounded-3xl overflow-hidden glass-card h-full flex flex-col border-dashed border-white/10 border-2 min-h-[400px]">
+              <div className="relative z-10 p-8 flex flex-col items-center justify-center flex-grow text-center">
+                <div className="w-16 h-16 rounded-full glass border-white/10 flex items-center justify-center mb-6 text-white/20 group-hover:text-neon-purple transition-colors duration-500">
+                  <span className="text-2xl font-bold italic">?</span>
+                </div>
+                <h3 className="font-plus text-xl font-bold text-white/40 mb-3 uppercase tracking-wider group-hover:text-white transition-colors">
+                  Coming Soon
+                </h3>
+                <p className="text-sm text-text-muted max-w-[200px]">
+                  Innovating the next digital experience. Stay tuned.
+                </p>
+              </div>
+              <div className="absolute bottom-4 right-4 h-1 w-1 bg-white/20 rounded-full" />
+            </article>
+          </motion.div>
         </div>
       </div>
     </section>
