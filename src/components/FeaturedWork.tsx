@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import chessImage from '@/assets/chesswithmonk-preview.png';
+import { MagicContainer, MagicCard } from '@/components/ui/MagicCard';
 
 const FeaturedWork = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -52,7 +53,7 @@ const FeaturedWork = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <MagicContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {/* First Project (Left) */}
           <motion.div style={{ x: leftX, opacity, scale }} className="h-full">
             <ProjectCard {...projects[0]} />
@@ -60,7 +61,12 @@ const FeaturedWork = () => {
 
           {/* Second Project (Center/Coming Soon) */}
           <motion.div style={{ opacity, scale }} className="h-full">
-            <article className="group relative rounded-3xl overflow-hidden glass-card h-full flex flex-col border-dashed border-white/10 border-2 min-h-[400px]">
+            <MagicCard
+              className="group h-full flex flex-col border-dashed border-white/10 border-2 min-h-[400px] rounded-3xl"
+              glowColor="132, 0, 255"
+              enableTilt={true}
+              particleCount={6}
+            >
               <div className="relative z-10 p-8 flex flex-col items-center justify-center flex-grow text-center">
                 <div className="w-16 h-16 rounded-full glass border-white/10 flex items-center justify-center mb-6 text-white/20 group-hover:text-neon-purple transition-colors duration-500">
                   <span className="text-2xl font-bold italic">?</span>
@@ -72,13 +78,17 @@ const FeaturedWork = () => {
                   Innovating the next digital experience. Stay tuned.
                 </p>
               </div>
-              <div className="absolute bottom-4 right-4 h-1 w-1 bg-white/20 rounded-full" />
-            </article>
+            </MagicCard>
           </motion.div>
 
           {/* Third Project (Right/Coming Soon) */}
           <motion.div style={{ x: rightX, opacity, scale }} className="h-full">
-            <article className="group relative rounded-3xl overflow-hidden glass-card h-full flex flex-col border-dashed border-white/10 border-2 min-h-[400px]">
+            <MagicCard
+              className="group h-full flex flex-col border-dashed border-white/10 border-2 min-h-[400px] rounded-3xl"
+              glowColor="132, 0, 255"
+              enableTilt={true}
+              particleCount={6}
+            >
               <div className="relative z-10 p-8 flex flex-col items-center justify-center flex-grow text-center">
                 <div className="w-16 h-16 rounded-full glass border-white/10 flex items-center justify-center mb-6 text-white/20 group-hover:text-neon-purple transition-colors duration-500">
                   <span className="text-2xl font-bold italic">?</span>
@@ -90,10 +100,9 @@ const FeaturedWork = () => {
                   Innovating the next digital experience. Stay tuned.
                 </p>
               </div>
-              <div className="absolute bottom-4 right-4 h-1 w-1 bg-white/20 rounded-full" />
-            </article>
+            </MagicCard>
           </motion.div>
-        </div>
+        </MagicContainer>
       </div>
     </section>
   );

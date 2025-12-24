@@ -3,6 +3,7 @@ import { ChevronRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import about1 from '@/assets/about-me-1.png';
 import about2 from '@/assets/about-me-2.png';
+import { MagicCard, MagicContainer } from '@/components/ui/MagicCard';
 
 const About = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -68,71 +69,77 @@ const About = () => {
               transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
               className="overflow-hidden"
             >
-              <div className="glass-card rounded-2xl p-8 md:p-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                  <div className="md:col-span-1 flex justify-center md:justify-start">
-                    <div className="relative group/avatar">
-                      <div className="w-56 h-56 rounded-3xl p-[2px] bg-white/10 group-hover/avatar:bg-gradient-neon transition-all duration-500 transform group-hover/avatar:rotate-2">
-                        <div className="w-full h-full rounded-[22px] bg-space-black overflow-hidden relative">
-                          <img
-                            src={about2}
-                            alt="Harman professional"
-                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100 group-hover/avatar:opacity-0"
-                          />
-                          <img
-                            src={about1}
-                            alt="Harman alternate"
-                            className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover/avatar:opacity-100 scale-110 group-hover/avatar:scale-100"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-space-black/60 to-transparent opacity-60" />
+              <MagicContainer>
+                <MagicCard
+                  className="rounded-2xl p-8 md:p-12 border-white/5"
+                  glowColor="132, 0, 255"
+                  particleCount={10}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start relative z-10">
+                    <div className="md:col-span-1 flex justify-center md:justify-start">
+                      <div className="relative group/avatar">
+                        <div className="w-56 h-56 rounded-3xl p-[2px] bg-white/10 group-hover/avatar:bg-gradient-neon transition-all duration-500 transform group-hover/avatar:rotate-2">
+                          <div className="w-full h-full rounded-[22px] bg-space-black overflow-hidden relative">
+                            <img
+                              src={about2}
+                              alt="Harman professional"
+                              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100 group-hover/avatar:opacity-0"
+                            />
+                            <img
+                              src={about1}
+                              alt="Harman alternate"
+                              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover/avatar:opacity-100 scale-110 group-hover/avatar:scale-100"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-space-black/60 to-transparent opacity-60" />
+                          </div>
+                        </div>
+                        <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full glass border-neon-cyan/50 flex items-center justify-center text-neon-cyan font-plus text-xl font-black z-20 shadow-glow">
+                          H
+                        </div>
+                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-neon-cyan rounded-full animate-pulse" />
+                        <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-neon-purple rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+                        <div className="absolute top-1/2 -right-4 w-3 h-3 bg-neon-blue rounded-full animate-ping" />
+                      </div>
+                    </div>
+
+                    <div className="md:col-span-2 text-left">
+                      <div className="space-y-4 text-text-secondary leading-relaxed">
+                        <p className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                          Hello! I'm <span className="text-neon-cyan font-semibold">Harman</span>, a 2nd-year B.Tech Computer Science student from Punjab, India,
+                          with an interest in building practical software systems and learning how real-world applications are designed and maintained.
+                        </p>
+                        <p className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                          I have a good working knowledge of <span className="text-neon-purple font-medium">HTML, CSS, and JavaScript</span>, and I'm comfortable
+                          creating interactive web interfaces and handling basic frontend logic and responsiveness. I also have a foundation in
+                          <span className="text-neon-blue font-medium"> C/C++ and Python</span>, and I'm currently improving my Data Structures and Algorithms
+                          skills with a focus on strengthening problem-solving ability in JAVA.
+                        </p>
+                        <p className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                          I enjoy working on hands-on projects that help me understand how different parts of a system come together, from logic
+                          and state handling to user experience. While I do not yet have formal industry experience, I bring a willingness to learn,
+                          consistency, and a problem-solving mindset, and I'm eager to gain practical exposure through internship opportunities
+                          in software development.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-4 mt-8">
+                        <div className="text-center glass p-4 rounded-xl animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                          <div className="font-plus text-2xl font-bold text-neon-cyan">1+</div>
+                          <div className="text-sm text-text-muted uppercase tracking-widest text-[10px] font-bold">Project</div>
+                        </div>
+                        <div className="text-center glass p-4 rounded-xl animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+                          <div className="font-plus text-2xl font-bold text-neon-purple">2nd</div>
+                          <div className="text-sm text-text-muted uppercase tracking-widest text-[10px] font-bold">Year</div>
+                        </div>
+                        <div className="text-center glass p-4 rounded-xl animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+                          <div className="font-plus text-2xl font-bold text-neon-blue">∞</div>
+                          <div className="text-sm text-text-muted uppercase tracking-widest text-[10px] font-bold">Passion</div>
                         </div>
                       </div>
-                      <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full glass border-neon-cyan/50 flex items-center justify-center text-neon-cyan font-plus text-xl font-black z-20 shadow-glow">
-                        H
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-neon-cyan rounded-full animate-pulse" />
-                      <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-neon-purple rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-                      <div className="absolute top-1/2 -right-4 w-3 h-3 bg-neon-blue rounded-full animate-ping" />
                     </div>
                   </div>
-
-                  <div className="md:col-span-2 text-left">
-                    <div className="space-y-4 text-text-secondary leading-relaxed">
-                      <p className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                        Hello! I'm <span className="text-neon-cyan font-semibold">Harman</span>, a 2nd-year B.Tech Computer Science student from Punjab, India,
-                        with an interest in building practical software systems and learning how real-world applications are designed and maintained.
-                      </p>
-                      <p className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                        I have a good working knowledge of <span className="text-neon-purple font-medium">HTML, CSS, and JavaScript</span>, and I'm comfortable
-                        creating interactive web interfaces and handling basic frontend logic and responsiveness. I also have a foundation in
-                        <span className="text-neon-blue font-medium"> C/C++ and Python</span>, and I'm currently improving my Data Structures and Algorithms
-                        skills with a focus on strengthening problem-solving ability in JAVA.
-                      </p>
-                      <p className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                        I enjoy working on hands-on projects that help me understand how different parts of a system come together, from logic
-                        and state handling to user experience. While I do not yet have formal industry experience, I bring a willingness to learn,
-                        consistency, and a problem-solving mindset, and I'm eager to gain practical exposure through internship opportunities
-                        in software development.
-                      </p>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-4 mt-8">
-                      <div className="text-center glass p-4 rounded-xl animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                        <div className="font-plus text-2xl font-bold text-neon-cyan">1+</div>
-                        <div className="text-sm text-text-muted uppercase tracking-widest text-[10px] font-bold">Project</div>
-                      </div>
-                      <div className="text-center glass p-4 rounded-xl animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-                        <div className="font-plus text-2xl font-bold text-neon-purple">2nd</div>
-                        <div className="text-sm text-text-muted uppercase tracking-widest text-[10px] font-bold">Year</div>
-                      </div>
-                      <div className="text-center glass p-4 rounded-xl animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                        <div className="font-plus text-2xl font-bold text-neon-blue">∞</div>
-                        <div className="text-sm text-text-muted uppercase tracking-widest text-[10px] font-bold">Passion</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </MagicCard>
+              </MagicContainer>
             </motion.div>
           )}
         </AnimatePresence>

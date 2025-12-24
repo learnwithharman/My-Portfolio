@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { MagicCard } from '@/components/ui/MagicCard';
 
 interface ProjectCardProps {
   title: string;
@@ -18,12 +19,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   image,
   technologies,
   liveUrl,
-  githubUrl,
   featured = false
 }) => {
   return (
-    <article className={`group relative rounded-3xl overflow-hidden glass-card h-full flex flex-col ${featured ? 'border-neon-cyan/30' : ''}`}>
-      {/* Background Glow Layer */}
+    <MagicCard
+      className={`group h-full flex flex-col rounded-3xl ${featured ? 'border-neon-cyan/30' : 'border-white/10'}`}
+      particleCount={10}
+      glowColor={featured ? "0, 242, 255" : "132, 0, 255"}
+    >
+      {/* Background Glow Layer handled by MagicCard, adding custom subtle one */}
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
       {/* Visual Header */}
@@ -80,10 +84,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           ))}
         </div>
       </div>
-
-      {/* Decorative Cyber Dot */}
-      <div className="absolute bottom-4 right-4 h-1 w-1 bg-neon-cyan rounded-full opacity-20 group-hover:opacity-100 group-hover:animate-ping" />
-    </article>
+    </MagicCard>
   );
 };
 
