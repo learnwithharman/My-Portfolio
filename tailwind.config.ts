@@ -79,7 +79,8 @@ export default {
 			},
 			fontFamily: {
 				plus: ['Plus Jakarta Sans', 'sans-serif'],
-				outfit: ['Outfit', 'sans-serif']
+				outfit: ['Outfit', 'sans-serif'],
+				raleway: ['Raleway', 'sans-serif']
 			},
 			backgroundImage: {
 				'gradient-cosmic': 'var(--gradient-cosmic)',

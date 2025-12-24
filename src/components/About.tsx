@@ -37,7 +37,7 @@ const About = () => {
           <div className="flex items-center gap-6">
             <h2
               id="about-heading"
-              className="font-plus text-4xl md:text-7xl font-extrabold text-white tracking-tighter transition-all duration-500 group-hover:text-neon-cyan"
+              className="font-raleway text-4xl md:text-7xl font-extrabold text-white tracking-tighter transition-all duration-500 group-hover:text-neon-cyan"
             >
               About <span className="text-white">Me</span>
             </h2>
@@ -103,7 +103,7 @@ const About = () => {
                     </div>
 
                     <div className="md:col-span-2 text-left">
-                      <div className="space-y-4 text-text-secondary leading-relaxed">
+                      <div className="space-y-4 text-text-secondary leading-relaxed font-raleway">
                         <p className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                           Hello! I'm <span className="text-neon-cyan font-semibold">Harman</span>, a 2nd-year B.Tech Computer Science student from Punjab, India,
                           with an interest in building practical software systems and learning how real-world applications are designed and maintained.

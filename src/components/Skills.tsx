@@ -77,11 +77,11 @@ const Skills = () => {
           <span className="text-xs font-bold uppercase tracking-[0.5em] text-neon-cyan mb-4">Expertise</span>
           <h2
             id="skills-heading"
-            className="font-orbitron text-4xl md:text-7xl font-black text-white mb-8 tracking-tighter"
+            className="font-raleway text-4xl md:text-7xl font-black text-white mb-8 tracking-tighter"
           >
             Technical <span className="text-neon-purple">Arsenal</span>
           </h2>
-          <p className="text-xl text-text-secondary max-w-3xl font-light leading-relaxed">
+          <p className="font-raleway text-xl text-text-secondary max-w-3xl font-light leading-relaxed">
             A curated list of technologies I use to build robust software systems,
             focused on performance and long-term maintainability.
           </p>
@@ -100,7 +100,7 @@ const Skills = () => {
                 <div className={`p-3 rounded-2xl glass border-${category.color}/30 shadow-lg group-hover:scale-110 transition-transform`}>
                   <category.icon className={`w-6 h-6 text-${category.color}`} />
                 </div>
-                <h3 className="font-orbitron text-xl font-bold text-white uppercase tracking-tight">
+                <h3 className="font-raleway text-xl font-bold text-white uppercase tracking-tight">
                   {category.title}
                 </h3>
               </div>
@@ -131,10 +131,10 @@ const Skills = () => {
 
             <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
               <div className="lg:col-span-4 text-center lg:text-left">
-                <h3 className="font-orbitron text-3xl font-black text-white mb-4 tracking-tight uppercase">
+                <h3 className="font-raleway text-3xl font-black text-white mb-4 tracking-tight uppercase">
                   Currently <br /> <span className="text-neon-cyan">Learning</span>
                 </h3>
-                <p className="text-text-muted text-lg font-light">
+                <p className="font-raleway text-text-muted text-lg font-light">
                   Expanding my horizons to bridge the gap between design and engineering.
                 </p>
               </div>

@@ -44,11 +44,11 @@ const FeaturedWork = () => {
           <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-neon-purple mb-4">Portfolio</span>
           <h2
             id="work-heading"
-            className="font-plus text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight"
+            className="font-raleway text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight"
           >
             My <span className="text-neon-cyan">Projects</span>
           </h2>
-          <p className="text-lg text-text-secondary max-w-2xl font-light leading-relaxed">
+          <p className="font-raleway text-lg text-text-secondary max-w-2xl font-light leading-relaxed">
             A selection of my recent technical projects and ongoing industrial research.
           </p>
         </div>
@@ -71,7 +71,7 @@ const FeaturedWork = () => {
                 <div className="w-16 h-16 rounded-full glass border-white/10 flex items-center justify-center mb-6 text-white/20 group-hover:text-neon-purple transition-colors duration-500">
                   <span className="text-2xl font-bold italic">?</span>
                 </div>
-                <h3 className="font-plus text-xl font-bold text-white/40 mb-3 uppercase tracking-wider group-hover:text-white transition-colors">
+                <h3 className="font-raleway text-xl font-bold text-white/40 mb-3 uppercase tracking-wider group-hover:text-white transition-colors">
                   Coming Soon
                 </h3>
                 <p className="text-sm text-text-muted max-w-[200px]">
@@ -93,7 +93,7 @@ const FeaturedWork = () => {
                 <div className="w-16 h-16 rounded-full glass border-white/10 flex items-center justify-center mb-6 text-white/20 group-hover:text-neon-purple transition-colors duration-500">
                   <span className="text-2xl font-bold italic">?</span>
                 </div>
-                <h3 className="font-plus text-xl font-bold text-white/40 mb-3 uppercase tracking-wider group-hover:text-white transition-colors">
+                <h3 className="font-raleway text-xl font-bold text-white/40 mb-3 uppercase tracking-wider group-hover:text-white transition-colors">
                   Coming Soon
                 </h3>
                 <p className="text-sm text-text-muted max-w-[200px]">

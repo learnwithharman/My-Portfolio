@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Download, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-space.jpg';
-import BlurText from './BlurText';
+import VariableProximity from '@/components/ui/VariableProximity';
 
 const Hero = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      containerRef.current.style.setProperty('--mouse-x', `${x}px`);
+      containerRef.current.style.setProperty('--mouse-y', `${y}px`);
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener('mousemove', handleMouseMove);
+      }
+    };
+  }, []);
   return (
     <section
       id="home"
@@ -36,20 +58,33 @@ const Hero = () => {
           Available for Internship
         </div>
 
-        <BlurText
-          text="HARMAN"
-          animateBy="letters"
-          direction="top"
-          delay={50}
-          className="font-plus text-5xl md:text-8xl lg:text-9xl font-extrabold text-white glow-text mb-8 tracking-tighter leading-[0.9]"
-        />
+        <div className="relative group/title cursor-default" ref={containerRef}>
+          <VariableProximity
+            label="HARMAN"
+            className="font-raleway text-5xl md:text-8xl lg:text-9xl font-extrabold text-white mb-8 tracking-tighter leading-[0.9] transition-colors duration-300"
+            fromFontVariationSettings="'wght' 800"
+            toFontVariationSettings="'wght' 950"
+            containerRef={containerRef}
+            radius={200}
+            falloff="gaussian"
+          />
+          {/* Mouse follow glow */}
+          <div
+            className="absolute -inset-10 bg-neon-cyan/20 blur-3xl rounded-full opacity-0 group-hover/title:opacity-100 transition-opacity duration-300 pointer-events-none mix-blend-screen"
+            style={{
+              left: 'var(--mouse-x, 50%)',
+              top: 'var(--mouse-y, 50%)',
+              transform: 'translate(-50%, -50%)',
+            }}
+          />
+        </div>
 
         <div className="flex flex-col items-center gap-6">
-          <p className="text-2xl md:text-4xl text-text-secondary font-light tracking-tight max-w-3xl">
+          <p className="font-raleway text-2xl md:text-4xl text-text-secondary font-light tracking-tight max-w-3xl">
             Building the next generation of <span className="text-white font-medium">real-world application systems.</span>
           </p>
 
-          <p className="text-lg text-text-muted max-w-xl leading-relaxed mb-8">
+          <p className="font-raleway text-lg text-text-muted max-w-xl leading-relaxed mb-8">
             2nd-year CSE student passionate about bridging the gap between <br className="hidden md:block" />
             complex logic and elegant user experiences.
           </p>

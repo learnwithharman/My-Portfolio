@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { MagicCard, MagicContainer } from '@/components/ui/MagicCard';
 
 const Contact = () => {
   const contactInfo = [
@@ -51,19 +52,23 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2
             id="contact-heading"
-            className="font-plus text-4xl md:text-5xl font-bold text-text-primary mb-6 glow-text"
+            className="font-raleway text-4xl md:text-5xl font-bold text-text-primary mb-6 glow-text"
           >
             Let's Connect
           </h2>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+          <p className="font-raleway text-xl text-text-secondary max-w-2xl mx-auto">
             Looking for an enthusiastic intern? Let's connect and discuss opportunities to learn and contribute.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <MagicContainer className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Contact Information */}
-          <div className="glass-card rounded-xl p-8">
-            <h3 className="font-plus text-2xl font-bold text-text-primary mb-8">
+          <MagicCard
+            className="rounded-xl p-8 border-white/5"
+            glowColor="0, 242, 255"
+            particleCount={5}
+          >
+            <h3 className="font-raleway text-2xl font-bold text-text-primary mb-8">
               Get In Touch
             </h3>
 
@@ -110,15 +115,19 @@ const Contact = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </MagicCard>
 
           {/* CTA Section */}
-          <div className="glass-card rounded-xl p-8 text-center">
+          <MagicCard
+            className="rounded-xl p-8 text-center border-white/5"
+            glowColor="132, 0, 255"
+            particleCount={5}
+          >
             <div className="mb-8">
               <div className="w-24 h-24 bg-gradient-neon rounded-full mx-auto mb-6 flex items-center justify-center">
                 <Mail className="w-12 h-12 text-space-black" />
               </div>
-              <h3 className="font-plus text-2xl font-bold text-text-primary mb-4">
+              <h3 className="font-raleway text-2xl font-bold text-text-primary mb-4">
                 Start a Project
               </h3>
               <p className="text-text-secondary mb-8">
@@ -134,8 +143,8 @@ const Contact = () => {
                 Get In Touch
               </a>
             </Button>
-          </div>
-        </div>
+          </MagicCard>
+        </MagicContainer>
 
         {/* Footer Bottom */}
         <div className="text-center pt-8 border-t border-space-deep">
