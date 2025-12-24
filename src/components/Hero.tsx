@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden py-32"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden py-20 md:py-32"
       aria-labelledby="hero-heading"
     >
       {/* Immersive Background Layer */}

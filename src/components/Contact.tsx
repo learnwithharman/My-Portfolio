@@ -47,7 +47,7 @@ const Contact = () => {
   ];
 
   return (
-    <footer id="contact" className="py-20 px-6 border-t border-space-deep" aria-labelledby="contact-heading">
+    <footer id="contact" className="py-12 md:py-20 px-6 border-t border-space-deep" aria-labelledby="contact-heading">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2

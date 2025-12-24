@@ -122,7 +122,7 @@ const Skills = () => {
         {/* Horizon Section - Learning Path */}
         <MagicContainer>
           <MagicCard
-            className="rounded-[40px] p-10 md:p-16 border-white/5 relative overflow-hidden"
+            className="rounded-[40px] p-6 md:p-16 border-white/5 relative overflow-hidden"
             glowColor="0, 242, 255"
             enableTilt={false}
             particleCount={15}

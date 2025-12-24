@@ -71,7 +71,7 @@ const About = () => {
             >
               <MagicContainer>
                 <MagicCard
-                  className="rounded-2xl p-8 md:p-12 border-white/5"
+                  className="rounded-2xl p-6 md:p-12 border-white/5"
                   glowColor="132, 0, 255"
                   particleCount={10}
                 >

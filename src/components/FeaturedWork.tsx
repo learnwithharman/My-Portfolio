@@ -17,10 +17,13 @@ const FeaturedWork = () => {
     restDelta: 0.001
   });
 
-  // Calculate spread offsets - only animate X on desktop
-  const leftX = useTransform(smoothProgress, [0, 1], [window.innerWidth > 768 ? "100%" : "0%", "0%"]);
-  const rightX = useTransform(smoothProgress, [0, 1], [window.innerWidth > 768 ? "-100%" : "0%", "0%"]);
-  const opacity = useTransform(smoothProgress, [0, 0.5], [0, 1]);
+  // Calculate spread offsets - simplified for mobile
+  const isMobile = window.innerWidth < 768;
+
+  const leftX = useTransform(smoothProgress, [0, 1], [isMobile ? "0%" : "100%", "0%"]);
+  const rightX = useTransform(smoothProgress, [0, 1], [isMobile ? "0%" : "-100%", "0%"]);
+  // More immediate opacity on mobile
+  const opacity = useTransform(smoothProgress, [0, isMobile ? 0.3 : 0.5], [0, 1]);
   const scale = useTransform(smoothProgress, [0, 1], [0.8, 1]);
 
   const projects = [
