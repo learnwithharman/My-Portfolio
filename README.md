@@ -51,6 +51,7 @@ A stunning, modern portfolio website featuring a cosmic space theme with glassmo
 - **Sticky Glass Header**: Floating glassmorphism navigation bar
 - **Smooth Scroll**: Anchor links with smooth scrolling behavior
 - **Profile Badge**: Compact profile display in header
+- **Contact Link**: Dedicated navigation option for quick access to contact info
 
 ### 🎭 Advanced Effects
 - **WebGL Particles**: High-performance galaxy background using OGL library
@@ -235,7 +236,9 @@ src/
 ### Responsive Design Strategy
 - **Mobile-First**: Tailwind's mobile-first breakpoint system
 - **Flexible Layouts**: CSS Grid and Flexbox for adaptive layouts
-- **Responsive Typography**: Fluid font sizes using Tailwind's responsive classes
+- **Fluid Typography**: Viewport-based scaling for major encoded text elements
+- **Optimized Containers**: Standardized max-widths (7xl) for balanced screen utilization
+- **Responsive Typography**: Fluid font sizes using Tailwind classes
 - **Touch-Friendly**: Adequate touch targets (minimum 44x44px) for mobile
 - **Breakpoints**: sm (640px), md (768px), lg (1024px), xl (1280px)
 
