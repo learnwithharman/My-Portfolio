@@ -378,7 +378,7 @@ const Navigation: React.FC<PillNavProps> = ({
 
       <div
         ref={mobileMenuRef}
-        className="md:hidden absolute top-[120%] left-6 right-6 rounded-3xl shadow-2xl z-[998] origin-top glass border-none overflow-hidden"
+        className="md:hidden absolute top-[120%] left-6 right-6 rounded-3xl shadow-2xl z-[998] origin-top glass border-none overflow-hidden pointer-events-auto"
         style={{
           ...cssVars,
           background: 'rgba(10, 10, 10, 0.9)',
