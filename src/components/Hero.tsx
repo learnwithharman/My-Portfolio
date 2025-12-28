@@ -49,8 +49,8 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[hsl(var(--space-black))] to-transparent" />
 
       {/* Content Container */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-neon-cyan/20 text-neon-cyan text-sm font-medium mb-12 animate-fade-in">
+      <div className="relative z-10 text-center px-4 md:px-6 max-w-7xl mx-auto w-full flex flex-col items-center justify-center h-full">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full glass border border-neon-cyan/20 text-neon-cyan text-xs md:text-sm font-medium mb-8 md:mb-12 animate-fade-in">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
@@ -61,7 +61,7 @@ const Hero = () => {
         <div className="relative group/title cursor-default" ref={containerRef}>
           <VariableProximity
             label="HARMAN"
-            className="font-raleway text-5xl md:text-8xl lg:text-9xl font-extrabold text-white mb-8 tracking-tighter leading-[0.9] transition-colors duration-300"
+            className="font-raleway text-[15vw] sm:text-[12vw] md:text-8xl lg:text-9xl xl:text-[10rem] font-extrabold text-white mb-6 md:mb-8 tracking-tighter leading-[0.9] transition-colors duration-300"
             fromFontVariationSettings="'wght' 800"
             toFontVariationSettings="'wght' 950"
             containerRef={containerRef}
@@ -94,7 +94,7 @@ const Hero = () => {
           <Button
             variant="default"
             size="lg"
-            className="bg-neon-cyan hover:bg-neon-cyan/80 text-space-black font-bold h-14 px-10 rounded-2xl shadow-neon hover:scale-105 transition-all duration-300 group"
+            className="bg-neon-cyan hover:bg-neon-cyan/80 text-space-black font-bold h-12 md:h-14 px-6 md:px-10 rounded-2xl shadow-neon hover:scale-105 transition-all duration-300 group text-sm md:text-base"
             asChild
           >
             <a href="#work" className="flex items-center gap-3">
@@ -106,7 +106,7 @@ const Hero = () => {
           <Button
             variant="ghost"
             size="lg"
-            className="h-14 px-10 rounded-2xl border border-white/10 hover:border-neon-purple hover:bg-neon-purple/5 text-white font-semibold transition-all duration-300 group"
+            className="h-12 md:h-14 px-6 md:px-10 rounded-2xl border border-white/10 hover:border-neon-purple hover:bg-neon-purple/5 text-white font-semibold transition-all duration-300 group text-sm md:text-base"
             asChild
           >
             <a href="/resume.pdf" download className="flex items-center gap-3">

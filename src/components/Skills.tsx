@@ -72,7 +72,7 @@ const Skills = () => {
       {/* Background Accent */}
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-neon-purple/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <div className="container mx-auto max-w-7xl relative z-10">
         <div className="flex flex-col items-center text-center mb-20 px-6">
           <span className="text-xs font-bold uppercase tracking-[0.5em] text-neon-cyan mb-4">Expertise</span>
           <h2

@@ -30,6 +30,7 @@ const Navigation: React.FC<PillNavProps> = ({
     { href: '#work', label: 'Projects' },
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
+    { href: '#contact', label: 'Contact' },
   ],
   activeHref,
   className = '',

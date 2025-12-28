@@ -29,7 +29,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/rohit-kumar-325a40204",
+      href: "https://www.linkedin.com/in/harman-068394327?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       color: "hover:text-neon-blue"
     },
     {
@@ -48,7 +48,7 @@ const Contact = () => {
 
   return (
     <footer id="contact" className="py-12 md:py-20 px-6 border-t border-space-deep" aria-labelledby="contact-heading">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2
             id="contact-heading"
