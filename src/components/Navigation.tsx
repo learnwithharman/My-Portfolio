@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { Home, Briefcase, User, Zap, Mail } from 'lucide-react';
 
 export type PillNavItem = {
   label: string;
   href: string;
   ariaLabel?: string;
+  icon?: React.ReactNode;
 };
 
 export interface PillNavProps {
@@ -43,23 +45,38 @@ const Navigation: React.FC<PillNavProps> = ({
   initialLoadAnimation = true
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
   const activeTweenRefs = useRef<Array<gsap.core.Tween | null>>([]);
   const logoImgRef = useRef<HTMLDivElement | null>(null);
   const logoTweenRef = useRef<gsap.core.Tween | null>(null);
-  const hamburgerRef = useRef<HTMLButtonElement | null>(null);
-  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | HTMLElement | null>(null);
+
+  // Helper to get icon based on label
+  const getIcon = (label: string) => {
+    const size = 18;
+    switch (label.toLowerCase()) {
+      case 'home': return <Home size={size} />;
+      case 'projects': return <Briefcase size={size} />;
+      case 'about': return <User size={size} />;
+      case 'skills': return <Zap size={size} />;
+      case 'contact': return <Mail size={size} />;
+      default: return null;
+    }
+  };
 
   useEffect(() => {
     const layout = () => {
       circleRefs.current.forEach(circle => {
         if (!circle?.parentElement) return;
 
-        const pill = circle.parentElement as HTMLElement;
+        // Use desktop container for measurements if possible, or fallback
+        // On mobile, these refs might render differently, so we check existence
+        const wrapper = circle.closest('.desktop-pill-wrapper');
+        if (!wrapper) return;
+
+        const pill = wrapper as HTMLElement;
         const rect = pill.getBoundingClientRect();
         const { width: w, height: h } = rect;
         const R = ((w * w) / 4 + h * h) / (2 * h);
@@ -111,11 +128,6 @@ const Navigation: React.FC<PillNavProps> = ({
 
     if (document.fonts) {
       document.fonts.ready.then(layout).catch(() => { });
-    }
-
-    const menu = mobileMenuRef.current;
-    if (menu) {
-      gsap.set(menu, { visibility: 'hidden', opacity: 0, scaleY: 1, y: 0 });
     }
 
     if (initialLoadAnimation) {
@@ -179,57 +191,6 @@ const Navigation: React.FC<PillNavProps> = ({
     });
   };
 
-  const toggleMobileMenu = () => {
-    const newState = !isMobileMenuOpen;
-    setIsMobileMenuOpen(newState);
-
-    const hamburger = hamburgerRef.current;
-    const menu = mobileMenuRef.current;
-
-    if (hamburger) {
-      const lines = hamburger.querySelectorAll('.hamburger-line');
-      if (newState) {
-        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
-      } else {
-        gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
-      }
-    }
-
-    if (menu) {
-      if (newState) {
-        gsap.set(menu, { visibility: 'visible' });
-        gsap.fromTo(
-          menu,
-          { opacity: 0, y: 10, scaleY: 1 },
-          {
-            opacity: 1,
-            y: 0,
-            scaleY: 1,
-            duration: 0.3,
-            ease,
-            transformOrigin: 'top center'
-          }
-        );
-      } else {
-        gsap.to(menu, {
-          opacity: 0,
-          y: 10,
-          scaleY: 1,
-          duration: 0.2,
-          ease,
-          transformOrigin: 'top center',
-          onComplete: () => {
-            gsap.set(menu, { visibility: 'hidden' });
-          }
-        });
-      }
-    }
-
-    onMobileMenuClick?.();
-  };
-
   const cssVars = {
     ['--base']: '#00F2FF', // neon-cyan equivalent
     ['--pill-bg']: '#ffffff10', // glass effect
@@ -238,7 +199,8 @@ const Navigation: React.FC<PillNavProps> = ({
     ['--nav-h']: '48px',
     ['--logo']: '40px',
     ['--pill-pad-x']: '20px',
-    ['--pill-gap']: '6px'
+    ['--pill-gap']: '6px',
+    ['--mobile-pad-x']: '12px'
   } as React.CSSProperties;
 
   return (
@@ -266,9 +228,10 @@ const Navigation: React.FC<PillNavProps> = ({
           </div>
         </a>
 
+        {/* Combined Nav Container */}
         <div
           ref={navItemsRef}
-          className="relative items-center rounded-full hidden md:flex ml-3 glass border-none px-1"
+          className="relative flex items-center rounded-full ml-3 glass border-none px-1"
           style={{
             height: 'var(--nav-h)',
             background: 'rgba(255, 255, 255, 0.05)',
@@ -283,6 +246,13 @@ const Navigation: React.FC<PillNavProps> = ({
             {items.map((item, i) => {
               const isActive = activeHref === item.href;
 
+              // Use active state for both mobile and desktop indicators
+              // Mobile style (icon only)
+              const mobileClasses = 'px-3 md:hidden flex items-center justify-center text-white hover:text-[#00F2FF] transition-colors';
+
+              // Desktop style (text pill with hover effect)
+              const desktopClasses = 'hidden md:inline-flex desktop-pill-wrapper px-0 h-full';
+
               const pillStyle: React.CSSProperties = {
                 background: 'transparent',
                 color: 'var(--pill-text)',
@@ -290,8 +260,9 @@ const Navigation: React.FC<PillNavProps> = ({
                 paddingRight: 'var(--pill-pad-x)'
               };
 
-              const PillContent = (
-                <>
+              // Desktop Content (Existing liquid hover)
+              const DesktopContent = (
+                <div className={desktopClasses} style={pillStyle}>
                   <span
                     className="hover-circle absolute left-1/2 bottom-0 rounded-full z-[1] block pointer-events-none"
                     style={{
@@ -303,7 +274,7 @@ const Navigation: React.FC<PillNavProps> = ({
                       circleRefs.current[i] = el;
                     }}
                   />
-                  <span className="label-stack relative inline-block leading-[1] z-[2]">
+                  <span className="label-stack relative inline-block leading-[1] z-[2] self-center">
                     <span
                       className="pill-label relative z-[2] inline-block leading-[1]"
                       style={{ willChange: 'transform' }}
@@ -328,107 +299,35 @@ const Navigation: React.FC<PillNavProps> = ({
                       aria-hidden="true"
                     />
                   )}
-                </>
+                </div>
               );
 
-              const basePillClasses =
-                'relative overflow-hidden inline-flex items-center justify-center h-full no-underline rounded-full box-border font-bold text-[13px] uppercase tracking-wider whitespace-nowrap cursor-pointer px-0 transition-colors duration-300';
+              // Mobile Content (Icon)
+              const MobileContent = (
+                <div className={mobileClasses}>
+                  {getIcon(item.label) || <span>{item.label.substring(0, 2)}</span>}
+                </div>
+              );
 
               return (
-                <li key={item.href} role="none" className="flex h-full">
+                <li key={item.href} role="none" className="flex h-full items-center">
                   <a
                     role="menuitem"
                     href={item.href}
-                    className={basePillClasses}
-                    style={pillStyle}
+                    className="relative overflow-hidden inline-flex items-center justify-center h-full no-underline rounded-full box-border font-bold text-[13px] uppercase tracking-wider whitespace-nowrap cursor-pointer px-0 transition-colors duration-300"
                     aria-label={item.ariaLabel || item.label}
                     onMouseEnter={() => handleEnter(i)}
                     onMouseLeave={() => handleLeave(i)}
                   >
-                    {PillContent}
+                    {DesktopContent}
+                    {MobileContent}
                   </a>
                 </li>
               );
             })}
           </ul>
         </div>
-
-        <button
-          ref={hamburgerRef}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-          aria-expanded={isMobileMenuOpen}
-          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1.5 cursor-pointer p-0 relative ml-3 glass"
-          style={{
-            width: 'var(--nav-h)',
-            height: 'var(--nav-h)',
-            background: 'var(--base)'
-          }}
-        >
-          <span
-            className="hamburger-line w-5 h-0.5 rounded origin-center"
-            style={{ background: 'black' }}
-          />
-          <span
-            className="hamburger-line w-5 h-0.5 rounded origin-center"
-            style={{ background: 'black' }}
-          />
-        </button>
       </nav>
-
-      <div
-        ref={mobileMenuRef}
-        className="md:hidden absolute top-[120%] left-6 right-6 rounded-3xl shadow-2xl z-[998] origin-top glass border-none overflow-hidden pointer-events-auto"
-        style={{
-          ...cssVars,
-          background: 'rgba(10, 10, 10, 0.9)',
-          backdropFilter: 'blur(30px)'
-        }}
-      >
-        <ul className="list-none m-0 p-2 flex flex-col gap-1">
-          {items.map(item => {
-            const defaultStyle: React.CSSProperties = {
-              background: 'transparent',
-              color: '#ffffff'
-            };
-            const hoverIn = (e: React.MouseEvent<HTMLAnchorElement>) => {
-              e.currentTarget.style.background = 'var(--base)';
-              e.currentTarget.style.color = '#000000';
-            };
-            const hoverOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.color = '#ffffff';
-            };
-
-            const linkClasses =
-              'block py-4 px-6 text-sm font-bold uppercase tracking-widest rounded-2xl transition-all duration-300';
-
-            return (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className={linkClasses}
-                  style={defaultStyle}
-                  onMouseEnter={hoverIn}
-                  onMouseLeave={hoverOut}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              </li>
-            );
-          })}
-          <li>
-            <a
-              href="mailto:officialharman69@gmail.com"
-              className="block py-4 px-6 text-sm font-bold uppercase tracking-widest rounded-2xl bg-[#00F2FF] text-black text-center mt-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Let's Talk
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
   );
 };
