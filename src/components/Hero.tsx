@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden py-20 md:py-32"
+      className="relative overflow-hidden py-20 md:py-32 flex flex-col items-center justify-center"
       aria-labelledby="hero-heading"
     >
       {/* Immersive Background Layer */}
@@ -46,10 +46,10 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-cosmic opacity-60" />
 
       {/* Bottom Section Blend */}
-      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[hsl(var(--space-black))] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[hsl(var(--space-black))] to-transparent" />
 
       {/* Content Container */}
-      <div className="relative z-10 text-center px-4 md:px-6 max-w-7xl mx-auto w-full flex flex-col items-center justify-center h-full">
+      <div className="relative z-10 text-center px-4 md:px-6 w-full max-w-[90vw] 2xl:max-w-[80vw] mx-auto flex flex-col items-center justify-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full glass border border-neon-cyan/20 text-neon-cyan text-xs md:text-sm font-medium mb-8 md:mb-12 animate-fade-in">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
