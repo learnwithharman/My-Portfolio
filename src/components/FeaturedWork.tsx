@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import chessImage from '@/assets/chesswithmonk-preview.png';
+import vericauseImage from '@/assets/vericause-preview.png';
 import { MagicContainer, MagicCard } from '@/components/ui/MagicCard';
 
 const FeaturedWork = () => {
@@ -34,6 +35,14 @@ const FeaturedWork = () => {
       technologies: ["React", "TypeScript", "Stockfish", "Web Workers", "Tailwind"],
       liveUrl: "https://chesswithmonkk.vercel.app/",
       featured: true
+    },
+    {
+      title: "VeriCause",
+      description: "A transparent donation platform serving as a 'Sovereign Trust Layer' for global philanthropy. It leverages cryptographic verification to ensure every contribution is tracked and verified through an autonomous protocol.",
+      image: vericauseImage,
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Web3", "Vercel"],
+      liveUrl: "https://vericause.vercel.app/",
+      featured: true
     }
   ];
 
@@ -62,26 +71,9 @@ const FeaturedWork = () => {
             <ProjectCard {...projects[0]} />
           </motion.div>
 
-          {/* Second Project (Center/Coming Soon) */}
+          {/* Second Project (Center) */}
           <motion.div style={{ opacity, scale }} className="h-full">
-            <MagicCard
-              className="group h-full flex flex-col border-dashed border-white/10 border-2 min-h-[400px] rounded-3xl"
-              glowColor="132, 0, 255"
-              enableTilt={true}
-              particleCount={6}
-            >
-              <div className="relative z-10 p-8 flex flex-col items-center justify-center flex-grow text-center">
-                <div className="w-16 h-16 rounded-full glass border-white/10 flex items-center justify-center mb-6 text-white/20 group-hover:text-neon-purple transition-colors duration-500">
-                  <span className="text-2xl font-bold italic">?</span>
-                </div>
-                <h3 className="font-raleway text-xl font-bold text-white/40 mb-3 uppercase tracking-wider group-hover:text-white transition-colors">
-                  Coming Soon
-                </h3>
-                <p className="text-sm text-text-muted max-w-[200px]">
-                  Innovating the next digital experience. Stay tuned.
-                </p>
-              </div>
-            </MagicCard>
+            <ProjectCard {...projects[1]} />
           </motion.div>
 
           {/* Third Project (Right/Coming Soon) */}
