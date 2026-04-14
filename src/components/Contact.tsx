@@ -41,7 +41,7 @@ const Contact = () => {
     {
       icon: Instagram,
       label: "Instagram",
-      href: "https://www.instagram.com/cozy.monkk/",
+      href: "https://www.instagram.com/ded.lecter/",
       color: "hover:text-pink-500"
     }
   ];
