@@ -105,7 +105,7 @@ const About = () => {
                     <div className="md:col-span-2 text-left">
                       <div className="space-y-4 text-text-secondary leading-relaxed font-raleway">
                         <p className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                          Hello! I'm <span className="text-neon-cyan font-semibold">Harman</span>, a 2nd-year B.Tech Computer Science student from Punjab, India,
+                          Hello! I'm <span className="text-neon-cyan font-semibold">Harman</span>, a 3rd-year B.Tech Computer Science student from Punjab, India,
                           with an interest in building practical software systems and learning how real-world applications are designed and maintained.
                         </p>
                         <p className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -128,7 +128,7 @@ const About = () => {
                           <div className="text-sm text-text-muted uppercase tracking-widest text-[10px] font-bold">Project</div>
                         </div>
                         <div className="text-center glass p-4 rounded-xl animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-                          <div className="font-plus text-2xl font-bold text-neon-purple">2nd</div>
+                          <div className="font-plus text-2xl font-bold text-neon-purple">3rd</div>
                           <div className="text-sm text-text-muted uppercase tracking-widest text-[10px] font-bold">Year</div>
                         </div>
                         <div className="text-center glass p-4 rounded-xl animate-fade-in-up" style={{ animationDelay: '0.6s' }}>

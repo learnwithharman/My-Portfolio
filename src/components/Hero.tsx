@@ -85,7 +85,7 @@ const Hero = () => {
           </p>
 
           <p className="font-raleway text-lg text-text-muted max-w-xl leading-relaxed mb-8">
-            2nd-year CSE student passionate about bridging the gap between <br className="hidden md:block" />
+            3rd-year CSE student passionate about bridging the gap between <br className="hidden md:block" />
             complex logic and elegant user experiences.
           </p>
         </div>
